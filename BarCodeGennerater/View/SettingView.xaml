@@ -1,0 +1,56 @@
+﻿<Window x:Class="BarCodeGennerater.View.SettingView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BarCodeGennerater.View"
+        mc:Ignorable="d"
+        Title="设置" Height="250" Width="500" DataContext="{Binding Source={StaticResource Locator},Path=SettingViewModel}" ResizeMode="NoResize" x:Name="Window"
+         Visibility="{Binding WinVisibility,UpdateSourceTrigger=PropertyChanged}" WindowStartupLocation="CenterScreen" Icon="../Image/设置.png">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <TabControl >
+            <TabItem Header="默认参数">
+                <Grid>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="医院名称"/><Run Text="："/></TextBlock>
+                    <TextBox HorizontalAlignment="Left" Height="16.24" Margin="70,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding HospitalName,UpdateSourceTrigger=PropertyChanged}"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="打印设置">
+                <Grid>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="左边距：" VerticalAlignment="Top"/>
+                    <TextBox HorizontalAlignment="Left" Height="15.24" Margin="63,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding LeftMargin,UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="202.666,10,0,0" TextWrapping="Wrap" Text="上边距：" VerticalAlignment="Top"/>
+                    <TextBox HorizontalAlignment="Left" Height="15.24" Margin="255.666,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding TopMargin,UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,35.76,0,0" TextWrapping="Wrap" Text="条码高：" VerticalAlignment="Top"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="202.666,35.76,0,0" TextWrapping="Wrap" Text="条码宽：" VerticalAlignment="Top"/>
+                    <TextBox HorizontalAlignment="Left" Height="15.24" Margin="63,35.76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding BarCodeHeight,UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox HorizontalAlignment="Left" Height="15.24" Margin="255.666,35.76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding BarCodeWidth,UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,83,0,0" TextWrapping="Wrap" Text="条码类型：" VerticalAlignment="Top"/>
+                    <ComboBox HorizontalAlignment="Left" Margin="70,78,0,0" VerticalAlignment="Top" Width="120" Height="22" ItemsSource="{Binding CodeTypes}"  SelectedItem="{Binding SelectedType}">
+                        
+                    </ComboBox>
+                    <TextBlock HorizontalAlignment="Left" Margin="203,83,0,0" TextWrapping="Wrap" Text="字体大小：" VerticalAlignment="Top"/>
+                    <TextBox HorizontalAlignment="Left" Height="23" Margin="263,78,0,0" TextWrapping="Wrap" Text="{Binding FontSize,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120" />
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="打印机">
+                <Grid>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="打印机：" VerticalAlignment="Top"/>
+                    <ComboBox HorizontalAlignment="Left" Margin="63,10,0,0" VerticalAlignment="Top" Width="177" Height="15" ItemsSource="{Binding Printers}" SelectedItem="{Binding SelectedPrinter}"/>
+
+                </Grid>
+            </TabItem>
+            <TextBlock Height="100" TextWrapping="Wrap" Text="TextBlock" Width="100"/>
+        </TabControl>
+        <Grid Grid.Row="1">
+            <Button Width="50" HorizontalAlignment="Left" Margin="160,5,0,5" Command="{Binding SaveCommand}" CommandParameter="{Binding ElementName=Window}">保存</Button>
+            <Button Width="50" HorizontalAlignment="Right" Margin="0,5,160,5" Command="{Binding CancelCommand}" CommandParameter="{Binding ElementName=Window}">取消</Button>
+        </Grid>
+    </Grid>
+</Window>

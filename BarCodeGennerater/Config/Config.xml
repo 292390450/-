@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configure>
+  <barcodeheight>60</barcodeheight>
+  <barcodewidth>200</barcodewidth>
+  <leftmargin>5</leftmargin>
+  <topmargin>5</topmargin>
+  <hospitalname>模拟医院</hospitalname>
+  <codetype>CODE_128</codetype>
+  <fontsize>14</fontsize>
+</configure>
